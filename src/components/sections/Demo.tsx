@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Send, Bot, User, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Skeleton, configureBoneyard } from "boneyard-js/react";
+import Tooltip from "@/components/ui/Tooltip";
 
 configureBoneyard({
   color: "#f1f5f9",
@@ -381,14 +382,18 @@ export default function Demo() {
                   }
                   className="flex-1 rounded-xl border border-foreground/10 px-4 py-2 text-sm text-foreground bg-surface-subtle focus:border-brand-accent focus:bg-background focus:outline-none"
                   disabled={isTyping}
+                  aria-label="Mensaje para el asistente virtual"
                 />
-                <button
-                  type="submit"
-                  disabled={isTyping || !inputValue.trim()}
-                  className="flex h-9 w-9 items-center justify-center rounded-xl bg-foreground text-background transition hover:bg-brand-accent hover:text-foreground disabled:opacity-40 disabled:hover:bg-foreground disabled:hover:text-background cursor-pointer"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
+                <Tooltip content="Enviar mensaje">
+                  <button
+                    type="submit"
+                    disabled={isTyping || !inputValue.trim()}
+                    className="flex h-9 w-9 items-center justify-center rounded-xl bg-foreground text-background transition hover:bg-brand-accent hover:text-foreground disabled:opacity-40 disabled:hover:bg-foreground disabled:hover:text-background cursor-pointer"
+                    aria-label="Enviar mensaje"
+                  >
+                    <Send className="w-4 h-4" />
+                  </button>
+                </Tooltip>
               </form>
             </div>
           </motion.div>
