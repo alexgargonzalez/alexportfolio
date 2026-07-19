@@ -13,7 +13,7 @@ export default function InteractiveParticles() {
   // Keep track of the current smoothed animation progress
   const currentProgress = useRef(0);
   
-  const count = 1000;
+  const count = 1500;
   
   // Set A: Chaotic Spherical Distribution
   const chaosPositions = useMemo(() => {
@@ -32,10 +32,10 @@ export default function InteractiveParticles() {
     return arr;
   }, []);
 
-  // Set B: Rigid 3D Grid Distribution (10 x 10 x 10 = 1000 points)
+  // Set B: Rigid 3D Grid Distribution (15 x 10 x 10 = 1500 points)
   const gridPositions = useMemo(() => {
     const arr = new Float32Array(count * 3);
-    const nx = 10;
+    const nx = 15;
     const ny = 10;
     const nz = 10;
     
