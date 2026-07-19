@@ -69,31 +69,40 @@ export default function InteractiveParticles() {
     const geometry = pointsRef.current.geometry;
     const positionAttr = geometry.attributes.position;
     
-    // Smooth the scroll input to make it feel organic and fluid
-    currentProgress.current = THREE.MathUtils.lerp(
-      currentProgress.current,
-      scrollProgress,
-      0.07 // Lerp weight: smaller = smoother/slower, larger = faster response
-    );
+    let needsBufferUpdate = false;
+    const diff = Math.abs(currentProgress.current - scrollProgress);
+    
+    if (diff > 0.0001) {
+      currentProgress.current = THREE.MathUtils.lerp(
+        currentProgress.current,
+        scrollProgress,
+        0.07 // Lerp weight: smaller = smoother/slower, larger = faster response
+      );
+      needsBufferUpdate = true;
+    } else if (currentProgress.current !== scrollProgress) {
+      currentProgress.current = scrollProgress;
+      needsBufferUpdate = true;
+    }
     
     const t = currentProgress.current;
     
-    // Easing function for the transition: cubic ease-in-out
-    const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    
-    const array = positionAttr.array as Float32Array;
-    
-    for (let i = 0; i < count; i++) {
-      const i3 = i * 3;
+    if (needsBufferUpdate) {
+      // Easing function for the transition: cubic ease-in-out
+      const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      const array = positionAttr.array as Float32Array;
       
-      // Interpolate positions between Set A (Chaos) and Set B (Grid)
-      array[i3] = chaosPositions[i3] * (1 - ease) + gridPositions[i3] * ease;
-      array[i3 + 1] = chaosPositions[i3 + 1] * (1 - ease) + gridPositions[i3 + 1] * ease;
-      array[i3 + 2] = chaosPositions[i3 + 2] * (1 - ease) + gridPositions[i3 + 2] * ease;
+      for (let i = 0; i < count; i++) {
+        const i3 = i * 3;
+        
+        // Interpolate positions between Set A (Chaos) and Set B (Grid)
+        array[i3] = chaosPositions[i3] * (1 - ease) + gridPositions[i3] * ease;
+        array[i3 + 1] = chaosPositions[i3 + 1] * (1 - ease) + gridPositions[i3 + 1] * ease;
+        array[i3 + 2] = chaosPositions[i3 + 2] * (1 - ease) + gridPositions[i3 + 2] * ease;
+      }
+      
+      // Tell Three.js to re-upload positions buffer to the GPU
+      positionAttr.needsUpdate = true;
     }
-    
-    // Tell Three.js to re-upload positions buffer to the GPU
-    positionAttr.needsUpdate = true;
     
     // Slowly rotate the point cloud
     // The rotation slows down by 80-90% as the particles order themselves
