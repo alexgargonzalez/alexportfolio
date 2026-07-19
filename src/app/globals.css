@@ -62,3 +62,8 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* Ensure all sections account for the fixed navbar height (64px / 4rem) when scrolling */
+section[id] {
+  scroll-margin-top: 4rem;
+}
