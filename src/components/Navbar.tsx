@@ -11,6 +11,7 @@ export default function Navbar() {
     if (href && href.startsWith("#")) {
       const targetElement = document.querySelector(href);
       if (targetElement) {
+        console.log("Scrolling to targetElement:", targetElement);
         targetElement.scrollIntoView({
           behavior: "smooth",
           block: "start",
