@@ -125,10 +125,18 @@ export default function Demo() {
     } 
     
     else if (bookingState === "awaiting_phone") {
-      const finalDetails = { ...bookingDetails, phone: userText };
-      nextDetails = { service: "", time: "", name: "", phone: "" };
-      nextState = "idle";
-      botResponse = `¡Reserva completada con éxito! 🎉\n\n📅 Fecha: Mañana\n🕒 Hora: ${finalDetails.time}\n💈 Servicio: ${finalDetails.service}\n👤 Cliente: ${finalDetails.name}\n📱 WhatsApp: ${userText}\n\nTe acabamos de enviar los detalles y la confirmación a tu móvil. ¡Te esperamos!`;
+      const cleanedPhone = userText.replace(/\s+/g, "").replace(/-+/g, "");
+      const phoneRegex = /^\+?[0-9]{9,15}$/;
+      if (!phoneRegex.test(cleanedPhone)) {
+        nextState = "awaiting_phone";
+        botResponse = "Por favor, introduce un número de teléfono de WhatsApp válido (mínimo 9 dígitos, ej: +34 612 345 678 o 612345678).";
+        nextDetails = { ...bookingDetails };
+      } else {
+        const finalDetails = { ...bookingDetails, phone: userText };
+        nextDetails = { service: "", time: "", name: "", phone: "" };
+        nextState = "idle";
+        botResponse = `¡Reserva completada con éxito! 🎉\n\n📅 Fecha: Mañana\n🕒 Hora: ${finalDetails.time}\n💈 Servicio: ${finalDetails.service}\n👤 Cliente: ${finalDetails.name}\n📱 WhatsApp: ${userText}\n\nTe acabamos de enviar los detalles y la confirmación a tu móvil. ¡Te esperamos!`;
+      }
     } 
     
     else {
