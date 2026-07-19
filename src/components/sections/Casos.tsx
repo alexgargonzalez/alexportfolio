@@ -48,13 +48,13 @@ export default function Casos() {
           className="max-w-3xl mb-16"
         >
           <span className="text-xs font-bold tracking-wider text-brand-accent uppercase">
-            [ CASOS DE ÉXITO ]
+            [ LO QUE PUEDO CONSTRUIR ]
           </span>
           <h2 className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl mt-3 mb-6">
-            Sistemas reales funcionando para negocios reales.
+            Sistemas que puedo construir para tu negocio.
           </h2>
           <p className="text-lg text-text-secondary leading-relaxed">
-            No solo diseño páginas bonitas. Construyo engranajes digitales que trabajan para tu negocio las 24 horas del día. Estos son algunos ejemplos de automatizaciones que puedes implementar:
+            No solo diseño páginas bonitas. Puedo construir engranajes digitales que trabajen para tu negocio las 24 horas del día. Estos son algunos ejemplos de las soluciones y automatizaciones que puedo implementar:
           </p>
         </motion.div>
 
@@ -78,23 +78,23 @@ export default function Casos() {
               </div>
               
               <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-brand-accent transition-colors flex items-center gap-1">
-                <span>Portal Clínico con Reservas Activas</span>
+                <span>Portal Clínico con Reservas</span>
                 <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
               </h3>
               
               <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                Desarrollo de una landing page rápida para una clínica de fisioterapia. Se integró un asistente de citas conectado directamente a Google Calendar que permite al paciente reservar y pagar la sesión sin intermediarios.
+                Este es el tipo de sistema que puedo construir: una landing page con un asistente de citas conectado directamente a Google Calendar que permita a los usuarios reservar y pagar la sesión sin intermediarios.
               </p>
 
               <div className="bg-surface-subtle border border-foreground/5 rounded-2xl p-5 mb-8">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Impacto</span>
-                    <span className="text-base font-bold text-foreground">+140 citas/mes</span>
+                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Funcionalidad</span>
+                    <span className="text-base font-bold text-foreground">Reserva y pago sin intermediarios</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Llamadas evitadas</span>
-                    <span className="text-base font-bold text-foreground">-45% de tiempo</span>
+                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Disponibilidad</span>
+                    <span className="text-base font-bold text-foreground">Reservas 24/7 sin llamadas</span>
                   </div>
                 </div>
               </div>
@@ -122,23 +122,23 @@ export default function Casos() {
               </div>
               
               <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-brand-accent transition-colors flex items-center gap-1">
-                <span>Agente de WhatsApp para Gimnasio</span>
+                <span>Agente de WhatsApp Inteligente</span>
                 <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
               </h3>
               
               <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                Integración de un chatbot inteligente en el canal oficial de WhatsApp Business de un centro deportivo. Responde a preguntas complejas de precios, disciplinas y suscripciones, derivando a la web solo para finalizar la compra.
+                Este es el tipo de sistema que puedo integrar: un chatbot inteligente en el canal oficial de WhatsApp Business para responder a preguntas sobre precios, disciplinas y horarios al instante, derivando a la web solo para finalizar la compra.
               </p>
 
               <div className="bg-surface-subtle border border-foreground/5 rounded-2xl p-5 mb-8">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Automatización</span>
-                    <span className="text-base font-bold text-foreground">80% de chats</span>
+                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Responde</span>
+                    <span className="text-base font-bold text-foreground">Precios, disciplinas y horarios al instante</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Horas de soporte</span>
-                    <span className="text-base font-bold text-foreground">-15h semanales</span>
+                    <span className="text-[10px] text-foreground/50 font-semibold uppercase block">Disponibilidad</span>
+                    <span className="text-base font-bold text-foreground">Atención automática 24/7</span>
                   </div>
                 </div>
               </div>
