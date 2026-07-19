@@ -5,6 +5,7 @@ import { Send, Bot, User, Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Skeleton, configureBoneyard } from "boneyard-js/react";
 import Tooltip from "@/components/ui/Tooltip";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 configureBoneyard({
   color: "#f1f5f9",
@@ -43,6 +44,7 @@ export default function Demo() {
   });
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const [animationParentRef] = useAutoAnimate();
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
@@ -316,55 +318,57 @@ export default function Demo() {
               {/* Chat Messages Area */}
               <div 
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto p-6 space-y-4 bg-white/50"
+                className="flex-1 overflow-y-auto p-6 bg-white/50"
               >
-                {messages.map((msg) => (
-                  <div
-                    key={msg.id}
-                    className={`flex items-start gap-2.5 max-w-[85%] ${
-                      msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
-                    }`}
-                  >
+                <div ref={animationParentRef} className="space-y-4">
+                  {messages.map((msg) => (
                     <div
-                      className={`flex h-7 w-7 shrink-0 select-none items-center justify-center rounded-full text-[10px] font-semibold ${
-                        msg.sender === "user"
-                          ? "bg-foreground text-background"
-                          : "bg-brand-accent/10 text-brand-accent"
+                      key={msg.id}
+                      className={`flex items-start gap-2.5 max-w-[85%] ${
+                        msg.sender === "user" ? "ml-auto flex-row-reverse" : "mr-auto"
                       }`}
                     >
-                      {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
-                    </div>
+                      <div
+                        className={`flex h-7 w-7 shrink-0 select-none items-center justify-center rounded-full text-[10px] font-semibold ${
+                          msg.sender === "user"
+                            ? "bg-foreground text-background"
+                            : "bg-brand-accent/10 text-brand-accent"
+                        }`}
+                      >
+                        {msg.sender === "user" ? <User className="w-3.5 h-3.5" /> : <Bot className="w-3.5 h-3.5" />}
+                      </div>
 
-                    {msg.sender === "bot" ? (
-                      <Skeleton name="chat-message" loading={!!msg.isSkeleton}>
+                      {msg.sender === "bot" ? (
+                        <Skeleton name="chat-message" loading={!!msg.isSkeleton}>
+                          <div
+                            className="rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed shadow-sm bg-background text-foreground rounded-tl-none border border-foreground/5"
+                          >
+                            {msg.text}
+                          </div>
+                        </Skeleton>
+                      ) : (
                         <div
-                          className="rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed shadow-sm bg-background text-foreground rounded-tl-none border border-foreground/5"
+                          className="rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed shadow-sm bg-foreground text-background rounded-tr-none"
                         >
                           {msg.text}
                         </div>
-                      </Skeleton>
-                    ) : (
-                      <div
-                        className="rounded-2xl px-4 py-2.5 text-sm whitespace-pre-line leading-relaxed shadow-sm bg-foreground text-background rounded-tr-none"
-                      >
-                        {msg.text}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      )}
+                    </div>
+                  ))}
 
-                {isTyping && !messages.some(msg => msg.isSkeleton) && (
-                  <div className="flex items-start gap-2.5 max-w-[80%] mr-auto">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent">
-                      <Bot className="w-3.5 h-3.5" />
+                  {isTyping && !messages.some(msg => msg.isSkeleton) && (
+                    <div className="flex items-start gap-2.5 max-w-[80%] mr-auto">
+                      <div className="flex h-7 w-7 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent">
+                        <Bot className="w-3.5 h-3.5" />
+                      </div>
+                      <div className="bg-background border border-foreground/5 rounded-2xl rounded-tl-none px-4 py-3 flex gap-1 items-center shadow-sm">
+                        <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </div>
                     </div>
-                    <div className="bg-background border border-foreground/5 rounded-2xl rounded-tl-none px-4 py-3 flex gap-1 items-center shadow-sm">
-                      <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <span className="h-2 w-2 rounded-full bg-foreground/30 animate-bounce" style={{ animationDelay: "300ms" }} />
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
               {/* Chat Input form */}

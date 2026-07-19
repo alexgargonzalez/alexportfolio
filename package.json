@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.10.0",
     "@radix-ui/react-tooltip": "^1.2.12",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
