@@ -73,7 +73,10 @@ export default function Contacto() {
             href="https://wa.me/34600000000?text=Hola%20Alex,%20estoy%20interesado%20en%20una%20web%20con%20asistente%20de%20IA%20para%20mi%20negocio."
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => toast.info("Abriendo chat de WhatsApp...", { description: "+34 600 000 000" })}
+            onClick={() => {
+              console.log("WhatsApp button clicked, triggering toast...");
+              toast.info("Abriendo chat de WhatsApp...", { description: "+34 600 000 000" });
+            }}
             className="flex-1 flex flex-col justify-between items-center text-center p-8 rounded-3xl border border-foreground/5 bg-surface-subtle shadow-sm transition hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] hover:shadow-md active:scale-[0.98] group cursor-pointer"
           >
             <div className="h-14 w-14 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
@@ -96,7 +99,10 @@ export default function Contacto() {
             href="https://calendly.com/alexportfolio/15min"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => toast.info("Abriendo Calendly...", { description: "Selecciona el mejor día y hora" })}
+            onClick={() => {
+              console.log("Calendly button clicked, triggering toast...");
+              toast.info("Abriendo Calendly...", { description: "Selecciona el mejor día y hora" });
+            }}
             className="flex-1 flex flex-col justify-between items-center text-center p-8 rounded-3xl border border-foreground/5 bg-surface-subtle shadow-sm transition hover:border-brand-accent/30 hover:bg-accent-soft hover:shadow-md active:scale-[0.98] group cursor-pointer"
           >
             <div className="h-14 w-14 rounded-2xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6 transition-transform group-hover:scale-110">
