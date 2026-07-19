@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "../../bones/registry";
+import LenisProvider from "@/components/LenisProvider";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -40,10 +41,12 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full`}
     >
       <body className="min-h-full bg-background text-foreground font-sans antialiased selection:bg-brand-accent/20 selection:text-brand-accent">
-        {children}
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );
