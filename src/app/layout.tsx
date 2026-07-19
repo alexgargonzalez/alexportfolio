@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "../../bones/registry";
 import CustomCursor from "@/components/CustomCursor";
+import { Toaster } from "sonner";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -46,6 +47,23 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground font-sans antialiased selection:bg-brand-accent/20 selection:text-brand-accent">
         <CustomCursor />
         {children}
+        <Toaster
+          position="bottom-right"
+          theme="light"
+          toastOptions={{
+            style: {
+              background: "#ffffff",
+              color: "#0a0a0a",
+              border: "1px solid rgba(10, 10, 10, 0.08)",
+              borderRadius: "16px",
+              fontFamily: "var(--font-sans)",
+              boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.08)",
+            },
+            classNames: {
+              success: "!border-brand-accent/30 !text-[#0a0a0a]",
+            }
+          }}
+        />
       </body>
     </html>
   );

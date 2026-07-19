@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Skeleton, configureBoneyard } from "boneyard-js/react";
 import Tooltip from "@/components/ui/Tooltip";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { toast } from "sonner";
 
 configureBoneyard({
   color: "#f1f5f9",
@@ -139,6 +140,10 @@ export default function Demo() {
         nextDetails = { service: "", time: "", name: "", phone: "" };
         nextState = "idle";
         botResponse = `¡Reserva completada con éxito! 🎉\n\n📅 Fecha: Mañana\n🕒 Hora: ${finalDetails.time}\n💈 Servicio: ${finalDetails.service}\n👤 Cliente: ${finalDetails.name}\n📱 WhatsApp: ${userText}\n\nTe acabamos de enviar los detalles y la confirmación a tu móvil. ¡Te esperamos!`;
+        
+        toast.success("¡Reserva completada con éxito!", {
+          description: `Servicio: ${finalDetails.service} | Hora: ${finalDetails.time}`,
+        });
       }
     } 
     
