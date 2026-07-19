@@ -67,9 +67,10 @@ export default function Casos() {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Case 1: Sistema de Reservas para Clínica */}
-          <motion.div 
+          <motion.a 
             variants={cardVariants}
-            className="group flex flex-col justify-between rounded-3xl border border-foreground/5 bg-background p-8 lg:p-10 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-brand-accent/20"
+            href="#contacto"
+            className="group flex flex-col justify-between rounded-3xl border border-foreground/5 bg-background p-8 lg:p-10 shadow-sm transition-all duration-200 hover:-translate-y-2 hover:shadow-lg hover:border-brand-accent/20 cursor-pointer"
           >
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-accent/10 text-brand-accent mb-6">
@@ -78,7 +79,7 @@ export default function Casos() {
               
               <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-brand-accent transition-colors flex items-center gap-1">
                 <span>Portal Clínico con Reservas Activas</span>
-                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
               </h3>
               
               <p className="text-text-secondary text-sm leading-relaxed mb-6">
@@ -107,12 +108,13 @@ export default function Casos() {
                 NEXT.JS • REACT • GOOGLE CALENDAR API • STRIPE
               </div>
             </div>
-          </motion.div>
+          </motion.a>
 
           {/* Case 2: Agente de WhatsApp */}
-          <motion.div 
+          <motion.a 
             variants={cardVariants}
-            className="group flex flex-col justify-between rounded-3xl border border-foreground/5 bg-background p-8 lg:p-10 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-lg hover:border-brand-accent/20"
+            href="#contacto"
+            className="group flex flex-col justify-between rounded-3xl border border-foreground/5 bg-background p-8 lg:p-10 shadow-sm transition-all duration-200 hover:-translate-y-2 hover:shadow-lg hover:border-brand-accent/20 cursor-pointer"
           >
             <div>
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-accent/10 text-brand-accent mb-6">
@@ -121,7 +123,7 @@ export default function Casos() {
               
               <h3 className="font-display text-2xl font-bold text-foreground mb-4 group-hover:text-brand-accent transition-colors flex items-center gap-1">
                 <span>Agente de WhatsApp para Gimnasio</span>
-                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-all duration-200" />
               </h3>
               
               <p className="text-text-secondary text-sm leading-relaxed mb-6">
@@ -150,7 +152,7 @@ export default function Casos() {
                 NODE.JS • META CLOUD API • CLAUDE API • POSTGRESQL
               </div>
             </div>
-          </motion.div>
+          </motion.a>
         </motion.div>
       </div>
     </section>
